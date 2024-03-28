@@ -8,6 +8,10 @@ program
   .version('1.0.0')
   .option('-f, --format <type>', 'output format')
   .arguments('<filepath1> <filepath2>')
-  .action((filepath1, filepath2) => console.log(gendiff(filepath1, filepath2)));
+  .action((filepath1, filepath2) => {
+    const { format } = program.opts();
+
+    console.log(gendiff(filepath1, filepath2, format));
+  });
 
 program.parse();
